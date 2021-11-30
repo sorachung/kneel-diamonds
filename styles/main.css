@@ -32,3 +32,10 @@ ul {
     font-size: 1rem;
 }
 
+.choices {
+  display: flex;
+}
+
+.customOrders {
+  margin: 2rem
+}
