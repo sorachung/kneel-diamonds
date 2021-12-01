@@ -1,4 +1,4 @@
-import { getOrders } from "./database.js"
+import { getOrders, addCustomOrder } from "./database.js"
 
 const buildOrderListItem = (order) => {
     return `<li>
@@ -23,3 +23,8 @@ export const Orders = () => {
     return html
 }
 
+document.addEventListener("click", (event) => {
+    if (event.target.id === "orderButton") {
+        addCustomOrder();
+    }
+})
