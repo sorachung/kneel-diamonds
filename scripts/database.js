@@ -53,6 +53,10 @@ export const getOrders = () => {
   return database.customOrders.map((order) => ({ ...order }));
 };
 
+export const getOrderBuilder = () => {
+  return {...database.orderBuilder};
+};
+
 export const setMetal = (id) => {
   database.orderBuilder.metalId = id;
 };
