@@ -3,26 +3,23 @@ import {
   getMetals,
   getSizes,
   getStyles,
+  getTypes,
   getOrderBuilder,
   addCustomOrder,
 } from "./database.js";
 
 const buildOrderListItem = (order) => {
   const metals = getMetals();
-
-  // Remember that the function you pass to find() must return true/false
-  const foundMetal = metals.find((metal) => {
-    return metal.id === order.metalId;
-  });
-
   const sizes = getSizes();
-
-  const foundSize = sizes.find((size) => size.id === order.sizeId);
-
   const styles = getStyles();
+  const types = getTypes();
+  // Remember that the function you pass to find() must return true/false
+  const foundMetal = metals.find((metal) =>  metal.id === order.metalId);
+  const foundSize = sizes.find((size) => size.id === order.sizeId);
   const foundStyle = styles.find((style) => style.id === order.styleId);
-
-  const totalCost = foundMetal.price + foundSize.price + foundStyle.price;
+  const foundType = types.find((type) => type.id === order.typeId);   
+  
+  const totalCost = (foundMetal.price + foundSize.price + foundStyle.price) * foundType.priceMult;
 
   const costString = totalCost.toLocaleString("en-US", {
     style: "currency",
@@ -54,7 +51,7 @@ export const Orders = () => {
 document.addEventListener("click", (event) => {
   if (event.target.id === "orderButton") {
     const builtOrder = getOrderBuilder();
-    if (Object.keys(builtOrder).length >= 3) {
+    if (Object.keys(builtOrder).length >= 4) {
       addCustomOrder();
     }
   }
