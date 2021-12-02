@@ -9,3 +9,10 @@
     box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
 }
 
+.type__list {
+    display: flex;
+}
+
+.type__list li {
+    margin: 1rem 1rem 0;
+}
