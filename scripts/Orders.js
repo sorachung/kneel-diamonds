@@ -6,7 +6,7 @@ import {
   getTypes,
   getOrderBuilder,
   addCustomOrder,
-} from "./database.js";
+} from "./dataAccess.js";
 
 const buildOrderListItem = (order) => {
   const metals = getMetals();
