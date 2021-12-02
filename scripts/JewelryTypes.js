@@ -12,7 +12,7 @@ document.addEventListener(
 ) 
 
 export const JewelryTypes = () => {
-    let html = "<ul>"
+    let html = '<ul class="type__list">'
 
     // Use .map() for converting objects to <li> elements
     const listItems = types.map(type => {
