@@ -1,4 +1,4 @@
-import { getStyles, setStyle } from "./database.js"
+import { getStyles, setStyle, getOrderBuilder } from "./database.js"
 
 const styles = getStyles()
 
@@ -15,7 +15,13 @@ export const JewelryStyles = () => {
     let html = "<ul>"
 
     // Use .map() for converting objects to <li> elements
-    const listItemsArray = styles.map( (style) => `<li></li><input type="radio" name="style" value="${style.id}" /> ${style.style} </li>`)
+    const listItemsArray = styles.map( (style) => {
+        if(getOrderBuilder().styleId === style.id) {
+            return `<li></li><input type="radio" name="style" checked="checked" value="${style.id}" /> ${style.style} </li>`
+        } else {
+            return `<li></li><input type="radio" name="style" value="${style.id}" /> ${style.style} </li>`
+        }
+    } )
 
 
     // Join all of the strings in the array into a single string

@@ -1,4 +1,4 @@
-import { getTypes, setType } from "./database.js"
+import { getTypes, setType, getOrderBuilder } from "./database.js"
 
 const types = getTypes()
 
@@ -16,9 +16,14 @@ export const JewelryTypes = () => {
 
     // Use .map() for converting objects to <li> elements
     const listItems = types.map(type => {
-        return `<li>
+        if(getOrderBuilder().typeId === type.id) {
+            return `<li>
+            <input type="radio" name="type" checked="checked value="${type.id}" /> ${type.name}
+        </li>`} else {
+            return `<li>
             <input type="radio" name="type" value="${type.id}" /> ${type.name}
         </li>`
+        }
     })
 
     html += listItems.join("")

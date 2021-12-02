@@ -1,4 +1,4 @@
-import { getMetals, setMetal } from "./database.js"
+import { getMetals, setMetal, getOrderBuilder } from "./database.js"
 
 const metals = getMetals()
 
@@ -16,9 +16,15 @@ export const Metals = () => {
 
     // This is how you have been converting objects to <li> elements
     for (const metal of metals) {
-        html += `<li>
-            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+        if(getOrderBuilder().metalId === metal.id) {
+            html += `<li>
+            <input type="radio" name="metal" checked="checked" value="${metal.id}" /> ${metal.metal}
         </li>`
+        } else {
+            html += `<li>
+            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+          </li>`
+        }
     }
 
     html += "</ul>"
