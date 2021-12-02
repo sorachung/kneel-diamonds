@@ -26,6 +26,12 @@ const database = {
     { id: 4, metal: "Platinum", price: 795.45 },
     { id: 5, metal: "Palladium", price: 1241.0 },
   ],
+  types: [
+    {id: 1, type: "ring", priceMult: 1},
+    {id: 2, type: "earring", priceMult: 2},
+    {id: 3, type: "necklace", priceMult: 4},
+
+  ]
   customOrders: [
     {
       id: 1,
@@ -52,6 +58,10 @@ export const getStyles = () => {
 export const getOrders = () => {
   return database.customOrders.map((order) => ({ ...order }));
 };
+
+export const getTypes = () => {
+  return database.types.map((type) => ({...type}))
+}
 
 export const getOrderBuilder = () => {
   return {...database.orderBuilder};
